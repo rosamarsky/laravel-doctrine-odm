@@ -1,25 +1,26 @@
 # Doctrine ODM for Laravel framework
+___
 
-## Installation
-    composer require rosamarsky/laravel-doctrine-odm
+## Installation & Configuration
+1. Install via composer: `composer require rosamarsky/laravel-doctrine-odm`;
 
-## Configuration
+2. Make sure `DocumentManagerServiceProvider.php` is registered in your application.
 
-1. Publish `doctrine-odm.php` config file;
+3. Publish `doctrine-odm.php` config file via command `php artisan vendor:publish`;
 
-2. Set .env variables for your mongodb connection:
+4. Set .env variables for your mongodb connection:
    - `MONGO_HOST`
    - `MONGO_PORT`
    - `MONGO_DB`
    - `MONGO_USER`
    - `MONGO_PASS`
 
-3. Make sure `DocumentManagerServiceProvider.php` is registered in your application.
-
 ## Notes
-    Only annotation driver available
+    Only annotation driver is available
 
-## Example to use
+___
+
+## Example
 
 ```php
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
