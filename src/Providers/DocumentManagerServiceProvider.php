@@ -8,7 +8,6 @@ use Doctrine\ODM\MongoDB\Configuration;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver;
 use Doctrine\ODM\MongoDB\Types\Type;
-use Illuminate\Contracts\Container\Container;
 use Illuminate\Support\ServiceProvider;
 use MongoDB\Client;
 use Rosamarsky\LaravelDoctrineOdm\Types\CarbonDateType;
@@ -17,17 +16,9 @@ class DocumentManagerServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $annotations = glob(__DIR__ . '/../../vendor/doctrine/mongodb-odm/lib/Doctrine/ODM/MongoDB/Mapping/Annotations/*\.php');
+        AnnotationRegistry::registerLoader('class_exists');
 
-        foreach ($annotations as $annotation) {
-            if (strpos('Abstract', $annotation)) {
-                continue;
-            }
-
-            AnnotationRegistry::registerFile($annotation);
-        }
-
-        $this->app->bind(DocumentManager::class, function (Container $app) {
+        $this->app->bind(DocumentManager::class, function () {
             $config = new Configuration();
             if (! $configs = $this->app->make('config')->get('doctrine-odm.manager')) {
                 throw new \Exception('No config file provided for doctrine-odm.');
