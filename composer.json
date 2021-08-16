@@ -1,0 +1,40 @@
+{
+    "name": "rosamarsky/laravel-doctrine-odm",
+    "version": "1.0",
+    "description": "Simple Laravel Doctrine2 ODM adapter",
+    "keywords": [
+        "laravel",
+        "doctrine",
+        "doctrine2",
+        "odm",
+        "doctrine odm"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Roman Samarsky",
+            "email": "rosamarsky@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Rosamarsky\\LaravelDoctrineOdm\\DoctrineOdmServiceProvider"
+            ]
+        }
+    },
+    "require": {
+        "php": "^7.1|^8",
+        "ext-mongodb": "*",
+        "illuminate/container": "*",
+        "nesbot/carbon": "^2|^3",
+        "doctrine/mongodb-odm": "^2"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Rosamarsky\\LaravelDoctrineOdm\\": "src"
+        }
+    }
+}
