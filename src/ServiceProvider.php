@@ -1,18 +1,18 @@
 <?php
 declare(strict_types=1);
 
-namespace Rosamarsky\LaravelDoctrineOdm\Providers;
+namespace Rosamarsky\LaravelDoctrineOdm;
 
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Doctrine\ODM\MongoDB\Configuration;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver;
 use Doctrine\ODM\MongoDB\Types\Type;
-use Illuminate\Support\ServiceProvider;
-use MongoDB\Client;
+use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Rosamarsky\LaravelDoctrineOdm\Types\CarbonDateType;
+use MongoDB\Client;
 
-class DocumentManagerServiceProvider extends ServiceProvider
+class ServiceProvider extends BaseServiceProvider
 {
     public function register(): void
     {

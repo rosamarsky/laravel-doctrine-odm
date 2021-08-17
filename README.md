@@ -4,9 +4,9 @@ ___
 ## Installation & Configuration
 1. Install via composer: `composer require rosamarsky/laravel-doctrine-odm`;
 
-2. Make sure `DocumentManagerServiceProvider.php` is registered in your application.
+2. Make sure `ServiceProvider.php` is registered in your application.
 
-3. Publish `doctrine-odm.php` config file via command `php artisan vendor:publish`;
+3. Publish `doctrine-odm.php` config file via command `php artisan vendor:publish` or `cp ./vendor/rosamarsky/laravel-doctrine-odm/config/doctrine-odm.php ./config/doctrine-odm.php`;
 
 4. Set .env variables for your mongodb connection:
    - `MONGO_HOST`
