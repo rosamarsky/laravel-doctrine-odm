@@ -56,6 +56,6 @@ class ServiceProvider extends BaseServiceProvider
 
     private function getConfigPath(): string
     {
-        return __DIR__ . '/../../config/doctrine-odm.php';
+        return __DIR__ . '/../config/doctrine-odm.php';
     }
 }
