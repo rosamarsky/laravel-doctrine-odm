@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Rosamarsky\LaravelDoctrineOdm;
 
-use Doctrine\Common\Annotations\AnnotationRegistry;
 use Doctrine\ODM\MongoDB\Configuration;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver;
@@ -16,8 +15,6 @@ class ServiceProvider extends BaseServiceProvider
 {
     public function register(): void
     {
-        AnnotationRegistry::registerLoader('class_exists');
-
         $this->app->bind(DocumentManager::class, function () {
             $config = new Configuration();
             if (! $configs = $this->app->make('config')->get('doctrine-odm.manager')) {

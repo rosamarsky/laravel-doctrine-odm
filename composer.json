@@ -1,6 +1,6 @@
 {
     "name": "rosamarsky/laravel-doctrine-odm",
-    "version": "1.1",
+    "version": "2.0",
     "description": "Simple Laravel Doctrine2 ODM adapter",
     "keywords": [
         "laravel",
@@ -30,7 +30,7 @@
         "illuminate/container": "*",
         "nesbot/carbon": "^2|^3",
         "doctrine/mongodb-odm": "^2",
-        "doctrine/annotations": "^1.0"
+        "doctrine/annotations": "^2.0"
     },
     "minimum-stability": "dev",
     "autoload": {
