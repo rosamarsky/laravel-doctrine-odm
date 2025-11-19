@@ -1,60 +1,93 @@
-# Doctrine ODM for Laravel framework
-___
+# Laravel Doctrine ODM
 
-## Installation & Configuration
-1. Install via composer: `composer require rosamarsky/laravel-doctrine-odm`;
+A simple **Doctrine ODM adapter** for Laravel 8+ / 9+ that supports **attribute** and **XML** mapping for MongoDB.
 
-2. Make sure `ServiceProvider.php` is registered in your application.
+## Features
+- Supports PHP 8 attributes and XML mappings.
+- Works with Doctrine ODM 3.0+.
+- Laravel service provider for easy integration.
+- Registers custom Carbon type automatically.
 
-3. Publish `doctrine-odm.php` config file via command `php artisan vendor:publish` or `cp ./vendor/rosamarsky/laravel-doctrine-odm/config/doctrine-odm.php ./config/doctrine-odm.php`;
+---
 
-4. Set .env variables for your mongodb connection:
-   - `MONGO_HOST`
-   - `MONGO_PORT`
-   - `MONGO_DB`
-   - `MONGO_USER`
-   - `MONGO_PASS`
+## Installation
 
-## Notes
-    Only annotation driver is available
+Install via Composer:
 
-___
+```bash
+composer require rosamarsky/laravel-doctrine-odm
+```
 
-## Example
+The package auto-registers the service provider, so no manual registration is required.
 
+---
+
+## Configuration
+
+Publish the config file:
+
+```bash
+php artisan vendor:publish --provider="Rosamarsky\LaravelDoctrineOdm\ServiceProvider" --tag=config
+```
+
+This will create config/doctrine-odm.php.
+
+Set your MongoDB credentials in .env or directly in the config:
+
+```dotenv
+MONGO_HOST=127.0.0.1
+MONGO_PORT=27017
+MONGO_DB=your_database
+MONGO_USER=
+MONGO_PASS=
+```
+
+---
+
+## Usage
+
+### Define Documents
 ```php
-use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use Doctrine\ODM\MongoDB\Mapping\Annotations\Document;
+use Doctrine\ODM\MongoDB\Mapping\Annotations\Id;
+use Doctrine\ODM\MongoDB\Mapping\Annotations\Field;
+use Carbon\Carbon;
 
-/** @ODM\Document(collection="users") */
-class User {
-    /** @ODM\Id() */
+#[Document(collection: "users")]
+class User
+{
+    #[Id]
     private string $id;
-    
-    /** @ODM\Field(type="string") */
+
+    #[Field(type: "string")]
     private string $name;
-    
-    /** @ODM\Field(type="string") */
+
+    #[Field(type: "string")]
     private string $email;
-    
-    /** @ODM\Field(type="carbon") */
+
+    #[Field(type: "carbon")]
     private Carbon $createdAt;
 
-    public function __construct(string $name, string $email) {
+    public function __construct(string $name, string $email)
+    {
         $this->name = $name;
         $this->email = $email;
+        $this->createdAt = new Carbon();
     }
 }
 ```
 
+XML mapping is also supported if you configure driver => 'xml' and put your XML files in metadata_dir.
+
+### Using DocumentManager
+
 ```php
-class UserController extends AbstractController {
-    private $manager;
- 
-    public function __construct(\Doctrine\ODM\MongoDB\DocumentManager $manager) 
-    {
-        $this->manager = $manager;
-    }
-    
+use \Doctrine\ODM\MongoDB\DocumentManager;
+
+class UserController extends AbstractController
+{
+    public function __construct(private readonly DocumentManager $manager) {}
+
     public function store(Request $request): User
     {
         $user = new User('Roman Samarsky', 'rosamarsky@gmail.com');
@@ -66,3 +99,7 @@ class UserController extends AbstractController {
     }
 }
 ```
+
+---
+## License 
+MIT © Roman Samarsky

@@ -1,11 +1,11 @@
 {
     "name": "rosamarsky/laravel-doctrine-odm",
-    "version": "2.1",
-    "description": "Simple Laravel Doctrine2 ODM adapter",
+    "version": "3.0",
+    "description": "Simple Laravel Doctrine ODM adapter",
     "keywords": [
         "laravel",
         "doctrine",
-        "doctrine2",
+        "mongodb",
         "odm",
         "doctrine odm"
     ],
@@ -25,12 +25,12 @@
         }
     },
     "require": {
-        "php": "^7.1|^8",
+        "php": "^8.1",
         "ext-mongodb": "*",
         "illuminate/container": "*",
+        "illuminate/support": "*",
         "nesbot/carbon": "^2|^3",
-        "doctrine/mongodb-odm": "<=2.8.2",
-        "doctrine/annotations": "^1.4|^2.0"
+        "doctrine/mongodb-odm": "^3.0"
     },
     "minimum-stability": "dev",
     "autoload": {
