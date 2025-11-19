@@ -1,6 +1,6 @@
 # Laravel Doctrine ODM
 
-A simple **Doctrine ODM adapter** for Laravel 8+ / 9+ that supports **attribute** and **XML** mapping for MongoDB.
+A simple **Doctrine ODM adapter** for Laravel that supports **attribute** and **XML** mapping for MongoDB.
 
 ## Features
 - Supports PHP 8 attributes and XML mappings.
@@ -48,24 +48,22 @@ MONGO_PASS=
 
 ### Define Documents
 ```php
-use Doctrine\ODM\MongoDB\Mapping\Annotations\Document;
-use Doctrine\ODM\MongoDB\Mapping\Annotations\Id;
-use Doctrine\ODM\MongoDB\Mapping\Annotations\Field;
+use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Carbon\Carbon;
 
-#[Document(collection: "users")]
+#[ODM\Document(collection: "users")]
 class User
 {
-    #[Id]
+    #[ODM\Id]
     private string $id;
 
-    #[Field(type: "string")]
+    #[ODM\Field(type: "string")]
     private string $name;
 
-    #[Field(type: "string")]
+    #[ODM\Field(type: "string")]
     private string $email;
 
-    #[Field(type: "carbon")]
+    #[ODM\Field(type: "carbon")]
     private Carbon $createdAt;
 
     public function __construct(string $name, string $email)

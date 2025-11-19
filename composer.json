@@ -1,6 +1,6 @@
 {
     "name": "rosamarsky/laravel-doctrine-odm",
-    "version": "3.0",
+    "version": "3.0.1",
     "description": "Simple Laravel Doctrine ODM adapter",
     "keywords": [
         "laravel",
