@@ -20,7 +20,7 @@ return [
         'persistent_collection_namespace' => 'PersistentCollections',
         'auto_generate_persistent_collection_classes' => \Doctrine\ODM\MongoDB\Configuration::AUTOGENERATE_EVAL,
 
-        'use_transactional_flush' => true,
+        'use_transactional_flush' => false,
 
         'connection' => [
             'dsn' => sprintf('mongodb://%s:%d', env('MONGO_HOST','127.0.0.1'), env('MONGO_PORT', 27017)),
